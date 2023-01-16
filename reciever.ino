@@ -1,6 +1,7 @@
 /*********
-  Modified from the examples of the Arduino LoRa library
-  More resources: https://randomnerdtutorials.com
+  Modified from the examples of the Arduino LoRa library by https://randomnerdtutorials.com
+  
+  Additionally modified for https://github.com/gar-vs-ballon-ag/reciever
 *********/
 
 #include <SPI.h>
@@ -40,6 +41,7 @@ void loop() {
   int packetSize = LoRa.parsePacket();
   if (packetSize) {
     // received a packet
+    // *Ballon-AG*: Nur die empfangenen pakete ausgeben
     //Serial.print("Received packet '");
 
     // read packet
@@ -47,7 +49,8 @@ void loop() {
       String LoRaData = LoRa.readString();
       Serial.print(LoRaData); 
     }
-
+    
+    // *Ballon-AG*: Nur die empfangenen pakete ausgeben
     // print RSSI of packet
     //Serial.print("' with RSSI ");
     //Serial.println(LoRa.packetRssi());
